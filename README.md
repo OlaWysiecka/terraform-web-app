@@ -6,10 +6,9 @@ The project demonstrates how to structure Terraform code using reusable modules 
 
 ## Project Status
 
-The infrastructure is being developed incrementally.
+The infrastructure has been implemented as a modular Terraform project.
 
 Currently implemented:
-
 - Networking module
 - VPC
 - Public and private subnets
@@ -18,22 +17,21 @@ Currently implemented:
 - Route tables
 - Security Groups
 - Network ACLs
-
-Planned:
-
 - Application Load Balancer
 - EC2 instances
 - Auto Scaling Group
-- IAM roles
-- RDS database
+- IAM role for EC2
+- RDS PostgreSQL database
 - Development environment
 - Staging environment
 - Production environment
-- Remote Terraform state
+- Remote state backend configuration
+
+All environments successfully pass terraform validate.
 
 ## Architecture
 
-The planned architecture follows a multi-tier design:
+The architecture follows a multi-tier design:
 
 ```text
                          Internet
@@ -152,8 +150,9 @@ The infrastructure is designed with security in mind:
 * RDS is not directly accessible from the Internet.
 * Web servers accept HTTP traffic only from the Load Balancer.
 * Database accepts PostgreSQL traffic only from the web server Security Group.
-* IAM roles will be used for EC2 instances.
-* Terraform state will be configured remotely.
+* IAM roles are used for EC2 instances.
+* Terraform state is configured using environment-specific remote S3 backend definitions.
+
 
 ### Validation
 Terraform configuration is validated using:
@@ -180,3 +179,4 @@ The goal of this project is to demonstrate a production-oriented Terraform archi
 * Least-privilege security
 * High availability concepts
 * Infrastructure version control
+
