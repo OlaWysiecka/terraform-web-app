@@ -31,9 +31,9 @@ resource "aws_db_instance" "this" {
 
   multi_az = var.multi_az
 
-  publicly_accessible    = false
-  skip_final_snapshot    = true
-  deletion_protection    = false
+  publicly_accessible     = false
+  skip_final_snapshot     = true
+  deletion_protection     = false
   backup_retention_period = 7
 
   tags = {
